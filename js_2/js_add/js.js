@@ -1,3 +1,5 @@
+'use strict'
+
 let week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 	arr = [321, 4687, 46548, 6849, 7654];
 
@@ -6,8 +8,8 @@ let week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
 
 for (let i = 0; i < arr.length; i++) {
-	var n = arr[i];
-	var n1;
+	let n = arr[i];
+	let n1;
 	if ( n > 9 ) {
   		while ( n > 9 ) {
     		n = n / 10;
@@ -23,5 +25,4 @@ for (let i = 0; i < arr.length; i++) {
 		console.log(arr[i]);
 	};
 };
-
 
