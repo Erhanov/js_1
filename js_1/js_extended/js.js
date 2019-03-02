@@ -15,4 +15,9 @@ for ( let i = 0; i < arr.length; i++) {
 }
 
 sum *= sum * sum;
+
+while (sum > 100) {
+    arr.push(sum % 10);
+    sum = Math.floor(sum / 10);
+}
 console.log(sum);
