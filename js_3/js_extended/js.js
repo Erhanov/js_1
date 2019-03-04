@@ -43,21 +43,23 @@ let arr = [20, 33, 1, 'Человек', 2, 3],
 
 console.log(strangeFunc(arr));
 
-let longStr = prompt('Text?', '50');
-let textFunc = (str) => {
-	while ( isNumeric(str) ) {
-		str = prompt('Text?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio non mollitia adipisci officiis repudiandae repellendus laudantium hic. Est quibusdam nam nulla voluptatem officiis ad aperiam vero repudiandae earum obcaecati doloremque consequatur dicta eum, magni quas reprehenderit velit sed quaerat ab, iure recusandae nihil at. Commodi placeat sapiente explicabo labore voluptatem modi dolores consectetur, quos facere. Quisquam, dolor eos ullam alias.');
+let longStr = ['Text', 50, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit elit'];
+let textFunc = (arr) => {
+	for (let i = 0; i < arr.length; i++) {
+		if ( isNumeric(arr[i]) ) {
+			console.log('NUMBER! Oh NO!');
+		} else if (arr[i].length > 50) {
+			let str1 = arr[i].substr(0, 50);
+			for (let i = 0; i < str1.length - 1; i++) {
+					if (str1[i] == ' ') {
+						str1 = str1.replace(str1.charAt(i), '');
+					}
+				}
+			console.log(str1 + '...');
+		} else {
+			console.log(arr[i]);
+		}
 	}
-
-	if (str.length > 50) {
-		let lastThreeDigits = str.substr(50); 
-		lastThreeDigits = '...';
-		let strLast = str.substr(0 , 50) + lastThreeDigits;
-		return strLast;
-	} else {
-		return str;
-	}
-	 
 }
 
-console.log(textFunc(longStr));
+textFunc(longStr);
