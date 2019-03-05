@@ -13,8 +13,6 @@ function getFriendlyNumbers(start, end){
 		arrRange.push(sum);
 		sum = 0;
 	}
-	console.log(arrRange);
-	console.log(sum);
 
 	let z = 0;
 	for (let z = 0; z < arrRange.length; z++) {
@@ -26,7 +24,6 @@ function getFriendlyNumbers(start, end){
 		arrRes.push(sum);
 		sum = 0;
 	}
-	console.log(arrRes);
 
 	let result = [],
 		arrResult = [];
@@ -34,7 +31,6 @@ function getFriendlyNumbers(start, end){
 	for (let j = start; j < end; j++) {
 		arrResult.push(j);
 	}
-	console.log(arrResult);
 
 	for (let z = 0; z < arrRes.length; z++) {
 		if (arrResult[z] == arrRes[z] && 
@@ -44,11 +40,6 @@ function getFriendlyNumbers(start, end){
 			result.push(arrResult[z]);
 		}
 	}
-	console.log(result);
 }
 
 getFriendlyNumbers(1, 500);
-
-
-
-	
