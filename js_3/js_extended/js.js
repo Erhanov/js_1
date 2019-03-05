@@ -43,18 +43,16 @@ let arr = [20, 33, 1, 'Человек', 2, 3],
 
 console.log(strangeFunc(arr));
 
-let longStr = ['Text', true, 50, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit elit'];
+
+
+let longStr = ['Text', true, 50, '    Lorem ipsum dolor sit amet, consectetur adipisicing elit elit   '];
 let textFunc = (arr) => {
 	for (let i = 0; i < arr.length; i++) {
 		if ( typeof(arr[i]) !== 'string' ) {
 			console.log('NUMBER! Oh NO!');
 		} else if (arr[i].length > 50) {
 			let str1 = arr[i].substr(0, 50);
-			for (let i = 0; i < str1.length - 1; i++) {
-					if (str1[i] == ' ') {
-						str1 = str1.replace(str1.charAt(i), '');
-					}
-				}
+			str1 = str1.trim();
 			console.log(str1 + '...');
 		} else {
 			console.log(arr[i]);
