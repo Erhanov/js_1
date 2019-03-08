@@ -100,8 +100,10 @@ let budjetValue = document.querySelector('.budget-value'),
 	monthSavingsValue = document.querySelector('.monthsavings-value'),
 	yearSavingsValue = document.querySelector('.yearsavings-value'),
 	incomeInput = document.getElementsByClassName('expenses-item'),
-	btn = document.getElementsByTagName('button'),
-	btnExpense = [], btnCount = [],
+	btnExpense = document.getElementsByTagName('button')[0],
+	btnOptExpense = document.getElementsByTagName('button')[1],
+	btnDayCount = document.getElementsByTagName('button')[2],
+	btnAllCount = document.getElementsByTagName('button')[3],
 	optionalexpensesItem = document.querySelectorAll('.optionalexpenses-item'),
 	expensesItem = document.querySelectorAll('.expenses-item'),
 	incomeChoose = document.querySelector('.choose-income'),
@@ -111,13 +113,6 @@ let budjetValue = document.querySelector('.budget-value'),
 	monthValue = document.querySelector('.month-value'),
 	dayValue = document.querySelector('.day-value');
 
-for (let i = 0; i < btn.length; i++) {
-	if (i < 2) {
-		btnExpense.push(btn[i]);
-	} else {
-		btnCount.push(btn[i]);
-	}
-}
 
 console.log(budjetValue);
 console.log(levelValue);
@@ -128,7 +123,9 @@ console.log(monthSavingsValue);
 console.log(yearSavingsValue);
 console.log(incomeInput);
 console.log(btnExpense);
-console.log(btnCount);
+console.log(btnOptExpense);
+console.log(btnDayCount);
+console.log(btnAllCount);
 console.log(optionalexpensesItem);
 console.log(expensesItem);
 console.log(incomeChoose);
