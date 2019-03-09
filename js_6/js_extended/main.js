@@ -1,25 +1,29 @@
 function formatDate(date) {
 
-	let day = date.getDate();
-	if (day < 10) day = '0' + day;
+	let day = date.getDate(),
+		month = date.getMonth() + 1,
+		year = date.getFullYear() % 100,
+		hours = date.getHours(),
+		minutes = date.getMinutes(),
+		seconds = date.getSeconds();
 
-	let month = date.getMonth() + 1;
-	if (month < 10) month = '0' + month;
+	let zeroPlus = (date) => {
+		if (date < 10) date = '0' + date;
+		return date; 
+	}
 
-	let year = date.getFullYear() % 100;
-	if (year < 10) year = '0' + year;
 
-	let hours = date.getHours();
-	if (hours < 10) hours = '0' + hours;
 
-	let minutes = date.getMinutes();
-	if (minutes < 10) minutes = '0' + minutes;
 
-	let seconds = date.getSeconds();
-	if (seconds < 10) seconds = '0' + seconds;
-
-	return hours + ':' + minutes + ':' + seconds + ' ' + day + '.' + month + '.' + year + ' ';
+	return  zeroPlus(hours) + ':' + 
+			zeroPlus(minutes) + ':' + 
+			zeroPlus(seconds) + ' ' + 
+			zeroPlus(day) + '.' + 
+			zeroPlus(month) + '.' + 
+			zeroPlus(year) + ' ';
 }
+
+
 
 let getCurrentDay = (date) => {
 	let day = date.getDay();
@@ -54,95 +58,28 @@ getCurrentDay(date);
 
 
 
-let differTwoDay = () => {
-	let fisrtDay = document.getElementById('fisrt'),
-	secondDay = document.getElementById('second');
+function differTwoDays() {
+	let firstDay = document.getElementById('fisrt'),
+		secondDay = document.getElementById('second');
 
-	console.log(fisrtDay.value);
-	console.log(secondDay.value);
+	let fisrtValue = new Date(Date.parse(firstDay.value)).getDate(),
+		secondValue = new Date(Date.parse(secondDay.value)).getDate();
 
-	let x, y, overall;
+	let compare1 = new Date(2019, 2, (fisrtValue - secondValue)).getDate(),
+		compare2 = new Date(2019, 2, (fisrtValue - secondValue)).getMonth(),
+		compare3 = new Date(2019, 2, (fisrtValue - secondValue)).getFullYear();
 
-	switch (fisrtDay.value) {
-		case 'Вс' :
-			x = 0;
-			break;
-		case 'Пн' :
-			x = 1;
-			break;
-		case 'Вт' :
-			x = 2;
-			break;
-		case 'Ср' :
-			x = 3;
-			break;
-		case 'Чт' :
-			x = 4;
-			break;
-		case 'Пт' :
-			x = 5;
-			break;
-		case 'Сб' :
-			x = 6;
-			break;
+	let thirdDay = document.getElementById('differ');
+
+	let zeroPlus = (date) => {
+		if (date < 10) date = '0' + date;
+		return date; 
 	}
-	console.log(x);
-	switch (secondDay.value) {
-		case 'Вс' :
-			y = 0;
-			break;
-		case 'Пн' :
-			y = 1;
-			break;
-		case 'Вт' :
-			y = 2;
-			break;
-		case 'Ср' :
-			y = 3;
-			break;
-		case 'Чт' :
-			y = 4;
-			break;
-		case 'Пт' :
-			y = 5;
-			break;
-		case 'Сб' :
-			y = 6;
-			break;
-	}
-	console.log(y);
-	overall = x - y;
-	console.log(overall);
-	switch (overall) {
-		case 0 :
-			console.log('Одни и те же дни')
-			break;
-		case 1 :
-			console.log(1);
-			break;
-		case 2 :
-			console.log(2);
-			break;
-		case 3 :
-			console.log(3);
-			break;
-		case 4 :
-			console.log(4);
-			break;
-		case 5 :
-			console.log(5);
-			break;
-		case 6 :
-			console.log(6);
-			break;
-		default :
-			console.log('не муддри');
 
+		thirdDay.value = zeroPlus(compare1) + '-' + zeroPlus(compare2) + '-' + zeroPlus(compare3);
 
-	}
-	return overall;
+	console.log(fisrtValue);
+	console.log(secondValue);
 }
 
-let dif = document.getElementById('differ');
-
-dif.value = differTwoDay();
+differTwoDays();
