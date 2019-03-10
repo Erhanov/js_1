@@ -49,21 +49,41 @@ btnStart.addEventListener('click', function() {
 
 	btnDayCount.disabled = false;
 
-	for (let i = 0; i < expensesItem.length; i++) {
-		expensesItem.addEventListener('input', function() {
-			for (let i = 0; i < expensesItem.length; i++) {
-				if (expensesItem[i].value !== '') {
-					btnExpense.disabled = false;
-				}
+	expensesItem.forEach(function(item, i, arr) {
+		expensesItem[i].addEventListener('input', function() {
+			if (expensesItem[i].value !== '') {
+				btnExpense.disabled = false;
 			}
 		});
-	}
+	});
+
+	
+
+	optionalexpensesItem.forEach(function(item, i, arr) {
+		optionalexpensesItem[i].addEventListener('input', function() {
+			if (optionalexpensesItem[i].value !== '') {
+				btnOptExpense.disabled = false;
+			}
+		});
+	});
+
+	
 });
 
 expensesItem.forEach(function(item, i, arr) {
 	expensesItem[i].addEventListener('input', function() {
-		if (expensesItem[i].value !== '') {
-			btnExpense.disabled = false;
+		let firstDigit = expensesItem[i].value.charCodeAt(0);
+		if (firstDigit > 57 || firstDigit < 48) {
+			expensesItem[i].value = '';
+		}
+	});
+});
+
+optionalexpensesItem.forEach(function(item, i ,arr) {
+	optionalexpensesItem[i].addEventListener('input', function() {
+		let firstDigit = optionalexpensesItem[i].value.charCodeAt(0);
+		if (firstDigit > 1103 || firstDigit < 1040) {
+			optionalexpensesItem[i].value = '';
 		}
 	});
 });
@@ -87,16 +107,17 @@ btnExpense.addEventListener('click', function() {
 				}		
 	}
 	expensesValue.textContent = sum;
-});
-
-
+});	
 
 
 btnOptExpense.addEventListener('click', function() {
+	optionalexpensesValue.textContent = '';
 	for (let i = 0; i < optionalexpensesItem.length; i++) {
 		appData.optionalExpences[i] = optionalexpensesItem[i].value;
 		optionalexpensesValue.textContent += appData.optionalExpences[i] + ' '; 
 	}
+
+		
 });
 
 btnDayCount.addEventListener('click', function() {
