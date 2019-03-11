@@ -71,12 +71,16 @@ btnStart.addEventListener('click', function() {
 });
 
 expensesItem.forEach(function(item, i, arr) {
-	expensesItem[i].addEventListener('input', function() {
-		let firstDigit = expensesItem[i].value.charCodeAt(0);
-		if (firstDigit > 57 || firstDigit < 48) {
-			expensesItem[i].value = '';
-		}
-	});
+	if (i % 2 == 0) {
+		console.log(i);
+	} else {
+		expensesItem[i].addEventListener('input', function() {
+			let firstDigit = expensesItem[i].value.charCodeAt(0);
+			if (firstDigit > 57 || firstDigit < 48) {
+				expensesItem[i].value = '';
+			}
+		});
+	}
 });
 
 optionalexpensesItem.forEach(function(item, i ,arr) {
