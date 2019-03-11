@@ -56,30 +56,28 @@ let date = new Date();
 document.write(formatDate(date));
 getCurrentDay(date);
 
+let btn = document.getElementById('btn');
 
-
-function differTwoDays() {
+btn.addEventListener('click', function() {
 	let firstDay = document.getElementById('fisrt'),
 		secondDay = document.getElementById('second');
 
 	let fisrtValue = new Date(Date.parse(firstDay.value)).getDate(),
-		secondValue = new Date(Date.parse(secondDay.value)).getDate();
+		secondValue = new Date(Date.parse(secondDay.value)).getDate(),
+		compare1 = new Date(2019, 2, (fisrtValue - secondValue)).getDate(),
+		thirdDay = document.getElementById('differ');
 
-	let compare1 = new Date(2019, 2, (fisrtValue - secondValue)).getDate(),
-		compare2 = new Date(2019, 2, (fisrtValue - secondValue)).getMonth(),
-		compare3 = new Date(2019, 2, (fisrtValue - secondValue)).getFullYear();
-
-	let thirdDay = document.getElementById('differ');
+	console.log(compare1);
 
 	let zeroPlus = (date) => {
 		if (date < 10) date = '0' + date;
 		return date; 
 	}
 
-		thirdDay.value = zeroPlus(compare1) + '-' + zeroPlus(compare2) + '-' + zeroPlus(compare3);
+		thirdDay.value = '2019-02-' + zeroPlus(compare1)
 
 	console.log(fisrtValue);
 	console.log(secondValue);
-}
+});
 
-differTwoDays();
+
