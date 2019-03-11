@@ -57,7 +57,7 @@ function currentDate() {
 	}
 
 
-	setTimeout("currentDate()", 1000);
+	setTimeout(currentDate, 1000);
 }
 
 
