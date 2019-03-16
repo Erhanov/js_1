@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	});
 
 	// Timer 
-	let deadline = '2019-03-10';
+	let deadline = '2019-03-17';
 
 	function getTimeRemain(endTime) {
 		let zeroPlus = (date) => {
@@ -43,11 +43,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			return date; 
 		}
 
-		let t = Date.parse(endTime) - Date.parse(new Date()),
+		let t = Date.parse(endTime) - new Date().getTime(),
 			seconds = zeroPlus(Math.floor((t / 1000) % 60)),
 			minutes = zeroPlus(Math.floor((t / 1000 / 60) % 60)),
-			hours = zeroPlus(Math.floor(t / (1000 * 60 * 60)));
+			hours = zeroPlus(Math.round(new Date().getUTCHours()) - Math.floor(t / (1000 * 60 * 60)));
 
+		console.log(Date.parse(endTime));
+		console.log(Math.round(new Date().getUTCHours()));
 
 		if (seconds < 0) {
 			return {
